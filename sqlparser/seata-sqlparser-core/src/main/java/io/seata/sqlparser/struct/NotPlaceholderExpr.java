@@ -13,31 +13,32 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package io.seata.core.rpc.netty;
 
-import io.seata.core.protocol.RegisterRMRequest;
-import io.seata.core.protocol.RegisterTMRequest;
+package io.seata.sqlparser.struct;
 
 /**
- * The interface Register check auth handler.
- *
- * @author slievrly
+ * The not placeholder expression.
+ * @author jsbxyyx
  */
-public interface RegisterCheckAuthHandler {
+public class NotPlaceholderExpr {
+
+    private static NotPlaceholderExpr instance = new NotPlaceholderExpr();
 
     /**
-     * Reg transaction manager check auth boolean.
+     * Get NotPlaceholder.
      *
-     * @param request the request
-     * @return the boolean
+     * @return the NotPlaceholder
      */
-    boolean regTransactionManagerCheckAuth(RegisterTMRequest request);
+    public static NotPlaceholderExpr get() {
+        return instance;
+    }
 
-    /**
-     * Reg resource manager check auth boolean.
-     *
-     * @param request the request
-     * @return the boolean
-     */
-    boolean regResourceManagerCheckAuth(RegisterRMRequest request);
+    private NotPlaceholderExpr() {
+    }
+
+    @Override
+    public String toString() {
+        return "NOT_PLACEHOLDER";
+    }
+
 }

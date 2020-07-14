@@ -13,23 +13,39 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package io.seata.core.rpc.netty;
-
-import io.netty.channel.Channel;
-import io.netty.channel.pool.AbstractChannelPoolHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package io.seata.saga.statelang.parser;
 
 /**
- * The type Default channel pool handler.
  *
- * @author slievrly
+ * Json Parser
+ *
+ * @author lorne.cl
  */
-public class DefaultChannelPoolHandler extends AbstractChannelPoolHandler {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultChannelPoolHandler.class);
+public interface JsonParser {
 
-    @Override
-    public void channelCreated(Channel ch) throws Exception {
+    /**
+     * get Name
+     *
+     * @return
+     */
+    String getName();
 
-    }
+    /**
+     * Object to Json string
+     *
+     * @param o
+     * @param prettyPrint
+     * @return
+     */
+    String toJsonString(Object o, boolean prettyPrint);
+
+    /**
+     * parse json string to Object
+     *
+     * @param json
+     * @param type
+     * @param <T>
+     * @return
+     */
+    <T> T parse(String json, Class<T> type, boolean ignoreAutoType);
 }

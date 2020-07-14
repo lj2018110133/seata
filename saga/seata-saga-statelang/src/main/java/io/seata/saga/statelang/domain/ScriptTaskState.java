@@ -13,34 +13,26 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package io.seata.core.rpc.netty;
+package io.seata.saga.statelang.domain;
 
 /**
- * The enum Transport protocol type.
+ * ScriptTask State, execute scripts
  *
- * @author slievrly
+ * @author lorne.cl
  */
-public enum TransportProtocolType {
-    /**
-     * Tcp transport protocol type.
-     */
-    TCP("tcp"),
+public interface ScriptTaskState extends TaskState {
 
     /**
-     * Udt transport protocol type.
+     * get ScriptType such as groovy
+     *
+     * @return
      */
-    UDT("udt"),
-    /**
-     * Unix domain socket transport protocol type.
-     */
-    UNIX_DOMAIN_SOCKET("unix-domain-socket");
+    String getScriptType();
 
     /**
-     * The Name.
+     * get ScriptContent
+     *
+     * @return
      */
-    public final String name;
-
-    TransportProtocolType(String name) {
-        this.name = name;
-    }
+    String getScriptContent();
 }
